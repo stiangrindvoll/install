@@ -3,3 +3,5 @@ name = Stian Grindvoll
 email = stian@grindvoll.org
 [core]
 	editor = vim
+[commit]
+	gpgsign = true
