@@ -1,0 +1,5 @@
+[user]
+name = Stian Grindvoll
+email = stian@grindvoll.org
+[core]
+	editor = vim

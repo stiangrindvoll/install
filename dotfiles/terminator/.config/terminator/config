@@ -1,0 +1,35 @@
+[global_config]
+  dbus = True
+  enabled_plugins = LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#006520"
+  suppress_multiple_term_dialog = True
+[keybindings]
+  next_tab = <Shift>Right
+  split_horiz = <Primary><Shift>h
+  prev_tab = <Shift>Left
+  move_tab_right = <Primary><Shift>Right
+  move_tab_left = <Primary><Shift>Left
+  split_vert = <Primary><Shift>s
+  new_tab = <Primary>t
+  toggle_scrollbar = None
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_darkness = 0.95
+    background_type = transparent
+    background_image = None
+    icon_bell = False
+    font = Go Mono 8
+    cursor_blink = False
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      profile = default
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
+
