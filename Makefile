@@ -1,4 +1,4 @@
-.PHONY: dotfiles
+.PHONY: dotfiles bin
 SHELL := /bin/bash
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 UBUNTU=artful
@@ -16,6 +16,7 @@ all:
 	make ruby
 	sudo make snap
 	make go
+	make bin
 
 dotfiles:
 	stow terminator bash git -d dotfiles -t ~/
@@ -67,3 +68,7 @@ pip:
 
 go:
 	go get -u github.com/github/hub
+
+bin:
+	mkdir -p ~/bin
+	wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/d2b7286e88230f5ee654acd2892504e5af482e43/third_party/build_fatpack/diff-so-fancy -O ~/bin/diff-so-fancy && chmod +x ~/bin/diff-so-fancy # version 1.2.0

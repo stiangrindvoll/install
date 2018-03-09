@@ -3,5 +3,11 @@ name = Stian Grindvoll
 email = stian@grindvoll.org
 [core]
 	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [commit]
 	gpgsign = true
+[color]
+	ui = true
+[color "diff"]
+	meta = yellow
+	commit = yellow bold
