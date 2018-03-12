@@ -20,7 +20,6 @@ all:
 
 dotfiles:
 	stow terminator bash git -d dotfiles -t ~/
-	#stow terminator -d dotfiles -t ~/.config/terminator/
 
 deb-dependencies:
 	mkdir -p ${DEP}
@@ -45,12 +44,9 @@ debs:
 aptitude:
 	apt-get update
 	apt-get install -y stow #dotfiles
-	apt-get install -y terminator
+	apt-get install -y git htop curl neovim terminator
 	apt-get install -y network-manager-openconnect-gnome
-	apt-get install -y git
-	apt-get install -y curl
 	apt-get install -y python3 python3-pip
-	apt-get install -y neovim
 	apt-get install -y esl-erlang	elixir
 	apt-get install -y docker-ce
 	apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev # ruby dependencies
