@@ -81,7 +81,8 @@ txtory='\e[38;5;180m' # Orangy
 txtyly='\e[38;5;185m' # yellowy
 txtrst='\e[0m'    # Text Reset
 
-PS1="\[$txtcyn\]\u@\h:\[$txtgry\]\w\[\033[m\]\[$txtory\]\$(__git_ps1)\[$txtcyn\]\$\[$txtrst\] "
+
+export PS1="\[$txtcyn\]\u@\h:\[$txtgry\]\w\[\033[m\]\[$txtory\]\$(__git_ps1)\[$txtcyn\]\$\[$txtrst\] "
 
 #if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -154,3 +155,19 @@ fi
 
 set -o vi
 eval "$(rbenv init -)"
+
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/stian/.fzf/bin* ]]; then
+  export PATH="$PATH:/home/stian/.fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/home/stian/.fzf/shell/completion.bash" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/home/stian/.fzf/shell/key-bindings.bash"
+
+export FZF_DEFAULT_OPTS="--reverse --inline-info"

@@ -35,9 +35,8 @@ apt-repositories:
 git-dependencies:
 	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 	git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-	git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-	git clone git/contrib/completion/git-prompt.sh
-	wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git_prompt.sh
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin
+
 debs:
 	dpkg -i repositorie/serlang-solutions_1.0_all.deb
 
@@ -47,7 +46,8 @@ aptitude:
 	apt-get install -y git htop curl neovim terminator
 	apt-get install -y network-manager-openconnect-gnome
 	apt-get install -y python3 python3-pip
-	apt-get install -y esl-erlang	elixir
+	apt-get install -y esl-erlang elixir npm
+	apt-get install -y openjdk-8-jre openjdk-8-jdk
 	apt-get install -y docker-ce
 	apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev # ruby dependencies
 
