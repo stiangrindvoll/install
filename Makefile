@@ -4,7 +4,7 @@ ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 UBUNTU=artful
 DEP=dependencies
 
-all:
+all: clean
 	make deb-dependencies
 	make apt-dependencies
 	sudo make apt-repositories
@@ -82,3 +82,7 @@ go:
 bin:
 	mkdir -p ~/bin
 	wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/d2b7286e88230f5ee654acd2892504e5af482e43/third_party/build_fatpack/diff-so-fancy -O ~/bin/diff-so-fancy && chmod +x ~/bin/diff-so-fancy # version 1.2.0
+
+
+clean:
+	rm -r ${DEP}
