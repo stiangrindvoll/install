@@ -146,7 +146,7 @@ fi
 
 # Stian Custom .bashrc configuration
 export GOPATH=$HOME/go
-export PATH=$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.rbenv/bin
+export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.rbenv/bin
 eval "$(hub alias -s)"
 
 if [ -f $HOME/go/src/github.com/github/hub/etc/hub.bash_completion ]; then
@@ -171,3 +171,6 @@ fi
 source "/home/stian/.fzf/shell/key-bindings.bash"
 
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
+
+# added by travis gem
+[ -f /home/stian/.travis/travis.sh ] && source /home/stian/.travis/travis.sh

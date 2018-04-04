@@ -48,7 +48,7 @@ aptitude:
 	apt-get install -y git htop curl neovim terminator jq
 	apt-get install -y network-manager-openconnect-gnome
 	apt-get install -y python3 python3-pip
-	apt-get install -y esl-erlang elixir npm
+	apt-get install -y esl-erlang elixir npm inotify-tools
 	apt-get install -y openjdk-8-jre openjdk-8-jdk
 	apt-get install -y docker-ce
 	apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev # ruby dependencies
@@ -62,6 +62,9 @@ snap:
 
 pip:
 	pip3 install --user docker-compose
+	pip3 install --user awscli
+	pip3 install --user git+https://github.com/makethunder/awsudo.git
+
 
 go:
 	go get -u github.com/github/hub
