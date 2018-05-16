@@ -6,6 +6,7 @@ Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdo
 
 " General Plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -18,13 +19,44 @@ Plug 'chr4/nginx.vim'
 
 " Language support
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
-Plug 'fatih/vim-go'                            " Go support
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
 Plug 'ctrlpvim/ctrlp.vim'          	       " CtrlP is installed to support tag finding in vim-go
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'zchee/deoplete-jedi'                     " Go auto completion
 
+" Color Themes
+Plug 'rakr/vim-one'
+
 call plug#end()
+
+"----------------------------------------------
+" Color settings
+"----------------------------------------------
+"
+" Color Themes Plugins And options
+let g:one_allow_italics = 1
+
+"Credit joshdick
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+set background=dark
+colorscheme one
+
+
 "----------------------------------------------
 " General settings
 "----------------------------------------------
@@ -72,11 +104,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-set rtp+=~/.fzf
-
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
-
 "----------------------------------------------
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
@@ -89,6 +116,15 @@ nnoremap <c-p> :FZF<cr>
 let g:deoplete#sources#go#pointer = 1
 
 "----------------------------------------------
+" Plugin: Shougo/neosnippet
+"----------------------------------------------
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
+"----------------------------------------------
 " Language: Golang
 "----------------------------------------------
 au FileType go set noexpandtab
@@ -97,20 +133,20 @@ au FileType go set softtabstop=4
 au FileType go set tabstop=4
 
 " Mappings
-au FileType go nmap <F8> :GoMetaLinter<cr>
-au FileType go nmap <F9> :GoCoverageToggle -short<cr>
-au FileType go nmap <F10> :GoTest -short<cr>
-au FileType go nmap <F12> <Plug>(go-def)
-au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-au FileType go nmap <leader>gt :GoDeclsDir<cr>
-au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>gd <Plug>(go-def)
-au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-au FileType go nmap <leader>gdh <Plug>(go-def-split)
-au FileType go nmap <leader>gD <Plug>(go-doc)
-au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
+"au FileType go nmap <F8> :GoMetaLinter<cr>
+"au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+"au FileType go nmap <F10> :GoTest -short<cr>
+"au FileType go nmap <F12> <Plug>(go-def)
+"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+"au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+"au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+"au FileType go nmap <leader>gt :GoDeclsDir<cr>
+"au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
+"au FileType go nmap <leader>gd <Plug>(go-def)
+"au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
+"au FileType go nmap <leader>gdh <Plug>(go-def-split)
+"au FileType go nmap <leader>gD <Plug>(go-doc)
+"au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
 
 " Run goimports when running gofmt
 let g:go_fmt_command = "goimports"
