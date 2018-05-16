@@ -174,3 +174,14 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 
 # added by travis gem
 [ -f /home/stian/.travis/travis.sh ] && source /home/stian/.travis/travis.sh
+
+
+### Functions
+
+function ai() {
+	awsi |grep $1 | cut -f1 -d' '
+}
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
