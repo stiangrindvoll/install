@@ -24,6 +24,8 @@ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' 
 Plug 'ctrlpvim/ctrlp.vim'          	       " CtrlP is installed to support tag finding in vim-go
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'zchee/deoplete-jedi'                     " Go auto completion
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 
 " Color Themes
 Plug 'rakr/vim-one'
@@ -132,6 +134,12 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
+"----------------------------------------------
+" Language: Elixir
+"----------------------------------------------
+let g:mix_format_on_save = 1
+let g:mix_format_options = '--check-equivalent'
+let g:mix_format_silent_errors = 1
 
 "----------------------------------------------
 " Language: Golang
