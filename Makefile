@@ -19,7 +19,7 @@ all: clean
 	make bin
 
 dotfiles:
-	stow nvim terminator bash git -d dotfiles -t ~/
+	stow tmux nvim terminator bash git -d dotfiles -t ~/
 
 deb-dependencies:
 	mkdir -p ${DEP}
