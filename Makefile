@@ -45,7 +45,7 @@ debs:
 aptitude:
 	apt-get update
 	apt-get install -y stow #dotfiles
-	apt-get install -y git htop curl neovim terminator jq
+	apt-get install -y git htop curl neovim terminator jq silversearcher-ag 
 	apt-get install -y network-manager-openconnect-gnome
 	apt-get install -y python3 python3-pip
 	apt-get install -y esl-erlang elixir npm inotify-tools
