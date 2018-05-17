@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'octref/RootIgnore'
 Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
 
@@ -190,7 +191,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "open NERDTree automatically when vim starts up on opening a directory
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
+"
+let NERDTreeRespectWildIgnore=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeShowHidden=1
