@@ -11,7 +11,8 @@
 [color "diff"]
 	meta = yellow
 	commit = yellow bold
-
+[branch]
+	autosetuprebase = always
 [alias]
 	ls = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(cyan)(%ar)%C(reset) %C(dim white)%s%C(reset)%C(dim red)%d%C(reset) %C(blue)[%an]%C(reset)' --all
 	ll = log --decorate --numstat --pretty=format:'%C(yellow)%h %C(dim white)%s %C(reset)%C(dim red)%d%C(reset)%Cblue[%cn]'

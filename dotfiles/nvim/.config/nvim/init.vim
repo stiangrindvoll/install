@@ -6,7 +6,6 @@ Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdo
 
 " General Plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'neomake/neomake'
@@ -53,7 +52,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
 if (has("termguicolors"))
-set termguicolors
+  set termguicolors
 endif
 set background=dark
 "colorscheme one
@@ -65,14 +64,14 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-function! s:base16_customize() abort
-  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
-endfunction
-
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
+"function! s:base16_customize() abort
+"  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
+"endfunction
+"
+"augroup on_change_colorschema
+"  autocmd!
+"  autocmd ColorScheme * call s:base16_customize()
+"augroup END
 
 "----------------------------------------------
 " General settings
@@ -135,6 +134,16 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Plugin: 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "----------------------------------------------
 " Plugin: 'junegunn/fzf.vim'
