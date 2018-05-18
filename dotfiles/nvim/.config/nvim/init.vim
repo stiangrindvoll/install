@@ -37,6 +37,7 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " Color Themes
 Plug 'rakr/vim-one'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -46,6 +47,7 @@ call plug#end()
 "
 " Color Themes Plugins And options
 let g:one_allow_italics = 1
+let base16colorspace=256  " Access colors present in 256 colorspace
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -54,8 +56,23 @@ if (has("termguicolors"))
 set termguicolors
 endif
 set background=dark
-colorscheme one
+"colorscheme one
+"colorscheme base16-circus
 
+" Sets colorscheme automatically based on base16 shell colour
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+function! s:base16_customize() abort
+  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
 
 "----------------------------------------------
 " General settings

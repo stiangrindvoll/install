@@ -37,6 +37,7 @@ git-dependencies:
 	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 	git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin
+	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 debs:
 	dpkg -i ${DEP}/erlang-solutions_1.0_all.deb
