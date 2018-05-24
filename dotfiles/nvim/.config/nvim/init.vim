@@ -20,6 +20,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'octref/RootIgnore'
 Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Language support
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
@@ -33,6 +34,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'pangloss/vim-javascript'
 
 " Color Themes
 Plug 'rakr/vim-one'
@@ -196,7 +198,6 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-
 "----------------------------------------------
 " Plugin: 'rking/ag.vim'
 "----------------------------------------------
@@ -255,6 +256,16 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 let g:mix_format_on_save = 1
 let g:mix_format_options = '--check-equivalent'
 let g:mix_format_silent_errors = 1
+
+
+" Language: javascript
+"
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+au FileType javascript set expandtab
+au FileType javascript set shiftwidth=2
+au FileType javascript set softtabstop=2
+au FileType javascript set tabstop=2
 
 "----------------------------------------------
 " Language: Golang
