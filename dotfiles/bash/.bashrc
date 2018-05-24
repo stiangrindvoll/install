@@ -188,3 +188,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# Turn SHIFT + 4 = $
+xmodmap -e "keycode 13 = 4 dollar 4 currency dollar onequarter"
