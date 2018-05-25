@@ -21,6 +21,7 @@ Plug 'octref/RootIgnore'
 Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 
 " Language support
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
