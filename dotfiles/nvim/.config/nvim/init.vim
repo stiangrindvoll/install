@@ -26,10 +26,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
 Plug 'ctrlpvim/ctrlp.vim'          	       " CtrlP is installed to support tag finding in vim-go
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'zchee/deoplete-jedi'                     " Go auto completion
+"Plug 'zchee/deoplete-jedi'                     " Go auto completion
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'mhinz/vim-mix-format'
@@ -57,7 +57,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-"colorscheme one
 "colorscheme base16-circus
 
 " Sets colorscheme automatically based on base16 shell colour
@@ -139,9 +138,9 @@ nnoremap <C-H> <C-W><C-H>
 
 " Plugin: 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+"if !exists('g:deoplete#omni#input_patterns')
+"  let g:deoplete#omni#input_patterns = {}
+"endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete
@@ -245,30 +244,6 @@ let g:deoplete#sources#go#pointer = 1
 "----------------------------------------------
 " Plugin: Shougo/neosnippet
 "----------------------------------------------
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 "----------------------------------------------
 " Language: Elixir
@@ -344,6 +319,8 @@ let g:go_test_show_name = 1
 
 " gometalinter configuration
 let g:go_metalinter_command = ""
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_enabled = [
     \ 'deadcode',
