@@ -36,6 +36,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'hashivim/vim-terraform'
 
 " Color Themes
 Plug 'rakr/vim-one'
@@ -426,3 +427,6 @@ au FileType ruby set expandtab
 au FileType ruby set shiftwidth=2
 au FileType ruby set softtabstop=2
 au FileType ruby set tabstop=2
+
+" Language: Terraform
+autocmd FileType terraform setlocal commentstring=#%s
