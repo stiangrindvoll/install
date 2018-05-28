@@ -3,3 +3,5 @@ alias awsi='awsudo -u blacksmiths python /home/stian/.local/bin/aws-instances.py
 alias stow='stow -t $HOME'
 alias ff='fzf'
 alias ipfs-start='systemctl --user enable --now ipfs'
+alias k8='kubectl'
+alias kc='kubectl'

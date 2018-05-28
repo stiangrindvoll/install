@@ -60,6 +60,7 @@ ruby:
 snap:
 	snap install ipfs
 	snap install go --classic
+	snap install kubectl --classic
 
 pip:
 	pip3 install --user docker-compose
