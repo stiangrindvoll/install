@@ -206,3 +206,5 @@ case $- in
     fi
     ;;
 esac
+
+source ~/.drone
