@@ -21,6 +21,7 @@ Plug 'octref/RootIgnore'
 Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'melonmanchan/vim-tmux-resizer'
 Plug 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 Plug 'karlbright/qfdo.vim'
 
@@ -138,6 +139,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Plugin: 'melonmanchan/vim-tmux-resizer'
+let g:tmux_resizer_no_mappings = 0
 
 " Plugin: 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
