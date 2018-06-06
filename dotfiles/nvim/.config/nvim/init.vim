@@ -344,6 +344,9 @@ let g:go_metalinter_enabled = [
 " Set whether the JSON tags should be snakecase or camelcase.
 let g:go_addtags_transform = "snakecase"
 
+" neomake configuration for Ruby.
+let g:neomake_ruby_enabled_makers = ['rubocop']
+
 " neomake configuration for Go.
 autocmd! BufWritePost * Neomake
 let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
