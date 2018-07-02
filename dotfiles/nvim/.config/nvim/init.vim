@@ -26,6 +26,8 @@ Plug 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 Plug 'karlbright/qfdo.vim'
 
 " Language support
+Plug 'janko-m/vim-test'
+Plug 'benmills/vimux'
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -208,6 +210,16 @@ command! -bang -nargs=? -complete=dir Files
 " Plugin: 'rking/ag.vim'
 "----------------------------------------------
 let g:ag_working_path_mode="r"
+
+" Plugin: 'janko-m/vim-test'
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+" make test commands execute using dispatch.vim
+let test#strategy = "vimux"
 
 
 "----------------------------------------------
