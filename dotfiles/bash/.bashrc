@@ -190,7 +190,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Turn SHIFT + 4 = $
-xmodmap -e "keycode 13 = 4 dollar 4 currency dollar onequarter"
+#xmodmap -e "keycode 13 = 4 dollar 4 currency dollar onequarter"
 
 # start tmux each time, if session is active, start a new
 case $- in

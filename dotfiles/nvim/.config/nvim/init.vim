@@ -13,7 +13,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -22,7 +25,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
-Plug 'jiangmiao/auto-pairs' " https://github.com/jiangmiao/auto-pairs
 Plug 'karlbright/qfdo.vim'
 
 " Language support
@@ -48,10 +50,10 @@ Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
-"----------------------------------------------
-" Color settings
-"----------------------------------------------
-"
+" Leader
+let mapleader = ","
+
+
 " Color Themes Plugins And options
 let g:one_allow_italics = 1
 let base16colorspace=256  " Access colors present in 256 colorspace
@@ -112,6 +114,23 @@ set tabstop=2
 "set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
 
+set nocompatible
+set modelines=0
+
+" search/moving related options
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
 " Enable mouse if possible
 if has('mouse')
     set mouse=a
@@ -123,6 +142,19 @@ set undodir=$HOME/.vim/undo
 
 set undolevels=1000
 set undoreload=10000
+
+" ignore arrows
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
