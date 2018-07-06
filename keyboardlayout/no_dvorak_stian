@@ -1,0 +1,13 @@
+
+
+// Stian custom norwegian dvorak
+partial alphanumeric_keys
+xkb_symbols "dvorak_stian" {
+
+    // Modifies the basic Norwegian Dvorak layout to Stian custom setup
+
+    include "no(dvorak)"
+    name[Group1]="Norwegian (Dvorak, Stian)";
+
+    key <AE04> { [	    4,	dollar, currency,  onequarter	] };
+};
