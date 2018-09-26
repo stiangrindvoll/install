@@ -208,3 +208,7 @@ case $- in
 esac
 
 source ~/.drone
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
