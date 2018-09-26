@@ -13,7 +13,6 @@ all: clean
 	make dotfiles
 	make pip
 	make git-dependencies
-	make ruby
 	sudo make snap
 	make go
 	make bin
@@ -34,14 +33,17 @@ apt-repositories:
 	add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu ${UBUNTU} stable"
 
 git-dependencies:
-	git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-	git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --bin
 	git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
 
 debs:
 	dpkg -i ${DEP}/erlang-solutions_1.0_all.deb
 	dpkg -i ${DEP}/atom-amd64.deb
+
+asdf:
+	asdf plugin-add golang
+	asdf install golang 1.11
 
 aptitude:
 	apt-get update
@@ -54,12 +56,7 @@ aptitude:
 	apt-get install -y docker-ce
 	apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev # ruby dependencies
 
-ruby:
-	cd ~/.rbenv && src/configure && make -C src
-
 snap:
-	snap install ipfs
-	snap install go --classic
 	snap install kubectl --classic
 
 pip:
