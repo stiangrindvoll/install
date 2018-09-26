@@ -32,10 +32,10 @@ Plug 'janko-m/vim-test'
 Plug 'benmills/vimux'
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'          	       " CtrlP is installed to support tag finding in vim-go
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-"Plug 'zchee/deoplete-jedi'                     " Go auto completion
+Plug 'zchee/deoplete-jedi'                     " Go auto completion
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
@@ -291,10 +291,25 @@ let g:NERDTreeIndicatorMapCustom = {
 "----------------------------------------------
 " Enable completing of go pointers
 let g:deoplete#sources#go#pointer = 1
-
+"let g:deoplete#sources#go#gocode_binary = '/home/stian/go/bin/gocode'
+"
+"" Path to python interpreter for neovim
+let g:python3_host_prog  = '/usr/bin/python3'
+let g:python_host_prog  = '/usr/bin/python'
+" Skip the check of neovim module
+let g:python3_host_skip_check = 1
+" neocomplete like
+set completeopt+=noinsert
+" deoplete.nvim recommend
+set completeopt+=noselect
 "----------------------------------------------
 " Plugin: Shougo/neosnippet
 "----------------------------------------------
+
+" Plugin: 'slashmili/alchemist.vim'
+" let g:alchemist#elixir_erlang_src = "/usr/local/share/src"
+let g:alchemist_tag_map = '<C-t>'
+let g:alchemist_tag_stack_map = '<C-g>'
 
 "----------------------------------------------
 " Language: Elixir
@@ -344,14 +359,15 @@ let g:go_fmt_command = "goimports"
 let g:go_snippet_engine = "neosnippet"
 
 " Enable syntax highlighting per default
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 
 " Show the progress when running :GoCoverage
 let g:go_echo_command_info = 1
