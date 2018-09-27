@@ -1,0 +1,2 @@
+pulse:
+	sudo apt-get -y install pulseaudio pulseaudio-module-zeroconf alsa-utils avahi-daemon
