@@ -25,7 +25,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
-Plug 'karlbright/qfdo.vim'
 
 " Language support
 Plug 'janko-m/vim-test'
@@ -43,6 +42,8 @@ Plug 'mhinz/vim-mix-format'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-rails'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Color Themes
 Plug 'rakr/vim-one'
@@ -174,6 +175,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" ctags
+" add shortcuts for going up and down the tag stack
+noremap <leader>t <C-]>
+noremap <leader>g <C-t>
+
+" Plugin: 'ludovicchabant/vim-gutentags'
+let g:gutentags_cache_dir = '~/.tags_cache'
+
 " Plugin: 'melonmanchan/vim-tmux-resizer'
 let g:tmux_resizer_no_mappings = 0
 
@@ -222,7 +231,7 @@ command! -bang -nargs=* GGrep
 "   :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                 <bang>0 ? fzf#vim#with_preview({'options': '--nogroup'}, 'up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
@@ -245,11 +254,11 @@ let g:ag_working_path_mode="r"
 
 " Plugin: 'janko-m/vim-test'
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
-nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
-nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
-nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
-nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+nmap <silent> <leader>n :TestNearest<CR>
+nmap <silent> <leader>f :TestFile<CR>
+nmap <silent> <leader>p :TestSuite<CR>
+"nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+"nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 " make test commands execute using dispatch.vim
 let test#strategy = "vimux"
 
@@ -308,8 +317,10 @@ set completeopt+=noselect
 
 " Plugin: 'slashmili/alchemist.vim'
 " let g:alchemist#elixir_erlang_src = "/usr/local/share/src"
-let g:alchemist_tag_map = '<C-t>'
-let g:alchemist_tag_stack_map = '<C-g>'
+"let g:alchemist_tag_map = '<C-t>'
+"let g:alchemist_tag_stack_map = '<C-g>'
+let g:alchemist_tag_map = '<leader>t'
+let g:alchemist_tag_stack_map = '<leader>g'
 
 "----------------------------------------------
 " Language: Elixir
@@ -383,6 +394,9 @@ let g:go_list_type = "quickfix"
 
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
+
+" Disable version warnings
+let g:go_version_warning = 0
 
 " gometalinter configuration
 let g:go_metalinter_command = ""
