@@ -180,6 +180,9 @@ nnoremap <C-H> <C-W><C-H>
 noremap <leader>t <C-]>
 noremap <leader>g <C-t>
 
+" Don't override yank register with the selection on paste
+xnoremap p "_dP
+
 " Plugin: 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.tags_cache'
 
