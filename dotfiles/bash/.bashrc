@@ -79,7 +79,7 @@ txtblu='\e[0;34m' # Blue
 txtpur='\e[0;35m' # Purple
 txtcyn='\e[0;36m' # Cyan
 txtwht='\e[0;37m' # White
-txtgry='\e[1;30m' # DarkGray
+txtgry='\e[1;90m' # DarkGray
 txtory='\e[38;5;180m' # Orangy
 txtyly='\e[38;5;185m' # yellowy
 txtrst='\e[0m'    # Text Reset
@@ -181,16 +181,19 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 
 ### Functions
 
-function ai() {
-	awsi |grep $1 | cut -f1 -d' '
-}
+# function ai() {
+# 	awsi |grep $1 | cut -f1 -d' '
+# }
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # Turn SHIFT + 4 = $
 #xmodmap -e "keycode 13 = 4 dollar 4 currency dollar onequarter"
@@ -221,3 +224,10 @@ source <(gp completion bash)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export EDITOR="nvim"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+. ~/.asdf/plugins/java/set-java-home.bash

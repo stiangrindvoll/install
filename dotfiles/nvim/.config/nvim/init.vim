@@ -22,11 +22,17 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'octref/RootIgnore'
 Plug 'airblade/vim-gitgutter'
-Plug 'chr4/nginx.vim'
+"Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
+Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rustfmt'
+
+"Plug 'vim-syntastic/syntastic'
+Plug 'majutsushi/tagbar'
 
 " Language support
+" Plug 'sheerun/vim-polyglot' " Consider for the future
 Plug 'janko-m/vim-test'
 Plug 'benmills/vimux'
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
@@ -41,9 +47,29 @@ Plug 'slashmili/alchemist.vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
 Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-rails'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [
+    \ 'javascript',
+    \ 'typescript',
+    \ 'css',
+    \ 'less',
+    \ 'scss',
+    \ 'json',
+    \ 'graphql',
+    \ 'markdown',
+    \ 'vue',
+    \ 'lua',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'html',
+    \ 'swift' ] }
 
 " Color Themes
 Plug 'rakr/vim-one'
@@ -73,7 +99,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
 "function! s:base16_customize() abort
 "  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
 "endfunction
@@ -186,6 +211,9 @@ xnoremap p "_dP
 " Plugin: 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.tags_cache'
 
+" Plugin: 'rust-lang/rustfmt'
+let g:rustfmt_autosave = 1
+
 " Plugin: 'melonmanchan/vim-tmux-resizer'
 let g:tmux_resizer_no_mappings = 0
 
@@ -249,6 +277,18 @@ command! -bang -nargs=* Rg
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+"----------------------------------------------
+" Plugin: 'vim-syntastic/syntastic'
+"----------------------------------------------
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 "----------------------------------------------
 " Plugin: 'rking/ag.vim'
@@ -452,7 +492,7 @@ let g:neomake_go_gometalinter_maker = {
 "----------------------------------------------
 " Language: Bash
 "----------------------------------------------
-au FileType sh set noexpandtab
+au FileType sh set expandtab
 au FileType sh set shiftwidth=2
 au FileType sh set softtabstop=2
 au FileType sh set tabstop=2
@@ -484,7 +524,7 @@ au FileType less set tabstop=2
 "----------------------------------------------
 " Language: Make
 "----------------------------------------------
-au FileType make set noexpandtab
+au FileType make set expandtab
 au FileType make set shiftwidth=2
 au FileType make set softtabstop=2
 au FileType make set tabstop=2
@@ -515,3 +555,6 @@ au FileType ruby set tabstop=2
 
 " Language: Terraform
 autocmd FileType terraform setlocal commentstring=#%s
+
+" Language: Javascript
+" Add stuff here if needed
